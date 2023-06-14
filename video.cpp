@@ -1,54 +1,42 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "video.h"
 
 using namespace std;
 
-class Episode;
+Video::Video(int id, string name, double duration, string genre, double rating) : id(id), name(name), duration(duration), genre(genre), rating(rating) {}
 
-class Video
+void Video::calculateAverageDuration() {}
+void Video::calculateAverageRating() {}
+void Video::setEpisodes(vector<Episode> newEpisodes) {}
+void Video::setRating(double newRating)
+
 {
-protected:
-    int id;
-    string name;
-    double duration;
-    string genre;
-    double rating;
+    rating = newRating;
+}
 
-public:
-    Video(int id, string name, double duration, string genre, double rating) : id(id), name(name), duration(duration), genre(genre), rating(rating) {}
+int Video::getId() const
+{
+    return id;
+}
 
-    virtual void calculateAverageDuration() {}
-    virtual void calculateAverageRating() {}
-    virtual void setEpisodes(vector<Episode> newEpisodes) {}
+string Video::getName() const
+{
+    return name;
+}
 
-    virtual void setRating(double newRating)
-    {
-        rating = newRating;
-    }
+double Video::getDuration() const
+{
+    return duration;
+}
 
-    int getId() const
-    {
-        return id;
-    }
+string Video::getGenre() const
+{
+    return genre;
+}
 
-    string getName() const
-    {
-        return name;
-    }
-
-    double getDuration() const
-    {
-        return duration;
-    }
-
-    string getGenre() const
-    {
-        return genre;
-    }
-
-    double getRating() const
-    {
-        return rating;
-    }
-};
+double Video::getRating() const
+{
+    return rating;
+}
