@@ -1,5 +1,5 @@
 #include "movie.cpp"
-#include "episode.h"
+#include "episode.cpp"
 #include <vector>
 #include <string>
 
