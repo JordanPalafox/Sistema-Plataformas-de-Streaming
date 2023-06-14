@@ -1,21 +1,17 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "video.cpp"
+#include "movie.h"
 
 using namespace std;
 
-class Movie : public Video
-{
-public:
-    Movie(int id, string name, double duration, string genre, double rating) : Video(id, name, duration, genre, rating) {}
+Movie::Movie(int id, string name, double duration, string genre, double rating) : Video(id, name, duration, genre, rating) {}
 
-    void calculateAverageDuration()
-    {
-        duration = duration;
-    }
-    void calculateAverageRating()
-    {
-        rating = rating;
-    }
-};
+void Movie::calculateAverageDuration()
+{
+    duration = duration;
+}
+void Movie::calculateAverageRating()
+{
+    rating = rating;
+}
