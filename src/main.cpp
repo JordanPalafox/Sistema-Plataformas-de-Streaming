@@ -8,6 +8,18 @@
 
 using namespace std;
 
+// el comando que se usa para limpiar la pantalla
+// depende de el sistema operativo, con esta variable
+// podemos hacer que cambie de valor dependiendo de esto
+#ifdef _WIN32
+    const char* clearScreen = "cls";
+    const char* pauseScreen = "pause>nul";
+#else
+    const char* clearScreen = "clear";
+    const char* pauseScreen = "read -n 1 -s";
+#endif
+
+
 int main()
 {
     vector<Video *> videos;
@@ -16,7 +28,7 @@ int main()
     bool exit = false;
     while (!exit)
     {
-        system("cls");
+        system(clearScreen);
         cout << "MENU:" << endl;
         cout << "1. Mostrar videos en general" << endl;
         cout << "2. Mostrar episodios de una serie" << endl;
@@ -30,7 +42,7 @@ int main()
         {
         case 1:
         {
-            system("cls");
+            system(clearScreen);
             for (const auto &video : videos)
             {
                 cout << "Nombre: " << video->getName() << endl;
@@ -45,12 +57,12 @@ int main()
                 cout << "-------------------------" << endl;
             }
             cout << "Presiona cualquier tecla para continuar..." << endl;
-            system("pause>nul");
+            system(pauseScreen);
             break;
         }
         case 2:
         {
-            system("cls");
+            system(clearScreen);
             string seriesName;
             cout << "Ingrese el nombre de la serie: ";
             cin.ignore();
@@ -73,12 +85,12 @@ int main()
                 }
             }
             cout << "Presiona cualquier tecla para continuar..." << endl;
-            system("pause>nul");
+            system(pauseScreen);
             break;
         }
         case 3:
         {
-            system("cls");
+            system(clearScreen);
             for (const auto &video : videos)
             {
                 Movie *movie = dynamic_cast<Movie *>(video);
@@ -92,12 +104,12 @@ int main()
                 }
             }
             cout << "Presiona cualquier tecla para continuar..." << endl;
-            system("pause>nul");
+            system(pauseScreen);
             break;
         }
         case 4:
         {
-            system("cls");
+            system(clearScreen);
             string videoTitle;
             double ratingValue;
             cout << "Ingrese el titulo del video a calificar: ";
@@ -116,7 +128,7 @@ int main()
                 }
             }
             cout << "Presiona cualquier tecla para continuar..." << endl;
-            system("pause>nul");
+            system(pauseScreen);
             break;
         }
         case 0:
