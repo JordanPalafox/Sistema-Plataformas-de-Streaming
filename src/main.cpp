@@ -8,6 +8,18 @@
 
 using namespace std;
 
+// el comando que se usa para limpiar la pantalla
+// depende de el sistema operativo, con esta variable
+// podemos hacer que cambie de valor dependiendo de esto
+#ifdef _WIN32
+    const char* clearScreen = "cls";
+    const char* pauseScreen = "pause>nul";
+#else
+    const char* clearScreen = "clear";
+    const char* pauseScreen = "read -n 1 -s";
+#endif
+
+
 int main()
 {
     vector<Video *> videos;
@@ -16,9 +28,9 @@ int main()
     bool exit = false;
     while (!exit)
     {
-        system("cls");
+        system(clearScreen);
         cout << "MENU:" << endl;
-        cout << "1. Mostrar videos en general" << endl;
+        cout << "1. Mostrar todo el contenido" << endl;
         cout << "2. Mostrar episodios de una serie" << endl;
         cout << "3. Mostrar peliculas" << endl;
         cout << "4. Calificar un video" << endl;
@@ -30,27 +42,26 @@ int main()
         {
         case 1:
         {
-            system("cls");
+            system(clearScreen);
             for (const auto &video : videos)
             {
-                cout << "Nombre: " << video->getName() << endl;
-                cout << "Duracion: " << video->getDuration() << endl;
+                cout << "---" << video->getName() << "---" << endl;
+                cout << "Duracion: " << video->getDuration() << " horas" << endl;
                 cout << "Genero: " << video->getGenre() << endl;
-                cout << "Calificacion: " << video->getRating() << endl;
+                cout << "Calificacion: " << video->getRating() << "/5" << endl;
                 Series *series = dynamic_cast<Series *>(video);
                 if (series)
                 {
                     cout << "Episodios: " << series->getEpisodes().size() << endl;
                 }
-                cout << "-------------------------" << endl;
             }
             cout << "Presiona cualquier tecla para continuar..." << endl;
-            system("pause>nul");
+            system(pauseScreen);
             break;
         }
         case 2:
         {
-            system("cls");
+            system(clearScreen);
             string seriesName;
             cout << "Ingrese el nombre de la serie: ";
             cin.ignore();
@@ -63,41 +74,41 @@ int main()
                 {
                     for (const auto &episode : series->getEpisodes())
                     {
-                        cout << "Episodio: " << episode.getTitle() << endl;
-                        cout << "Temporada: " << episode.getSeason() << endl;
-                        cout << "Duracion: " << episode.getDuration() << endl;
-                        cout << "Calificacion: " << episode.getRating() << endl;
+
+			cout << "T" << episode.getSeason() << "E" << episode.getTitle() << endl;
+                        cout << "Duracion: " << episode.getDuration() << " horas" << endl;
+                        cout << "Calificacion: " << episode.getRating() << "/5" << endl;
                         cout << "-------------------------" << endl;
                     }
                     break;
                 }
             }
             cout << "Presiona cualquier tecla para continuar..." << endl;
-            system("pause>nul");
+            system(pauseScreen);
             break;
         }
         case 3:
         {
-            system("cls");
+            system(clearScreen);
             for (const auto &video : videos)
             {
                 Movie *movie = dynamic_cast<Movie *>(video);
                 if (movie)
                 {
                     cout << "Nombre: " << movie->getName() << endl;
-                    cout << "Duracion: " << movie->getDuration() << endl;
+                    cout << "Duracion: " << movie->getDuration() << " horas" << endl;
                     cout << "Genero: " << movie->getGenre() << endl;
-                    cout << "Calificacion: " << movie->getRating() << endl;
+                    cout << "Calificacion: " << movie->getRating() << "/5" << endl;
                     cout << "-------------------------" << endl;
                 }
             }
             cout << "Presiona cualquier tecla para continuar..." << endl;
-            system("pause>nul");
+            system(pauseScreen);
             break;
         }
         case 4:
         {
-            system("cls");
+            system(clearScreen);
             string videoTitle;
             double ratingValue;
             cout << "Ingrese el titulo del video a calificar: ";
@@ -116,7 +127,7 @@ int main()
                 }
             }
             cout << "Presiona cualquier tecla para continuar..." << endl;
-            system("pause>nul");
+            system(pauseScreen);
             break;
         }
         case 0:
