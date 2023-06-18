@@ -17,8 +17,7 @@ protected:
 public:
     Video(int id, string name, double duration, string genre, double rating);
 
-    virtual void calculateAverageDuration();
-    virtual void calculateAverageRating();
+    virtual void calculateAverageDurationAndRating();
     virtual void setEpisodes(vector<Episode> newEpisodes);
 
     virtual void setRating(double newRating);

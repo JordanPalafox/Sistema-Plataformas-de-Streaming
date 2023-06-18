@@ -8,35 +8,29 @@ using namespace std;
 Series::Series(int id, string name, double duration, string genre, double rating, vector<Episode> episodes)
     : Video(id, name, duration, genre, rating), episodes(episodes)
 {
-    calculateAverageDuration();
-    calculateAverageRating();
+    calculateAverageDurationAndRating();
 }
 
-void Series::calculateAverageDuration()
+void Series::calculateAverageDurationAndRating()
 {
-    double totalDuration = 0;
-    for (const auto &episode : episodes)
-    {
-        totalDuration += episode.getDuration();
-    }
-    duration = totalDuration;
-}
+    Episode totalEpisode("totalRating", 1, 1, 1);
 
-void Series::calculateAverageRating()
-{
-    double totalRating = 0;
+
     for (const auto &episode : episodes)
     {
-        totalRating += episode.getRating();
+        totalEpisode = totalEpisode + episode;
     }
+
     if (episodes.size() > 0)
     {
-        rating = totalRating / episodes.size();
+        rating = totalEpisode.getRating() / episodes.size();
     }
     else
     {
         rating = 0;
     }
+
+    duration = totalEpisode.getDuration();
 }
 
 vector<Episode> Series::getEpisodes() const
