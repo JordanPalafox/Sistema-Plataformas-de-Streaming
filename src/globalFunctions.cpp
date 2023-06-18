@@ -44,8 +44,7 @@ void importData(vector<Video *> &videos)
             if (episodes.size() > 0)
             {
                 static_cast<Series *>(videos.back())->setEpisodes(episodes);
-                videos.back()->calculateAverageDuration();
-                videos.back()->calculateAverageRating();
+                videos.back()->calculateAverageDurationAndRating();
                 episodes.clear();
             }
         }

@@ -16,4 +16,6 @@ public:
     int getSeason() const;
     double getDuration() const;
     double getRating() const;
+
+    Episode operator+(Episode const& obj);
 };

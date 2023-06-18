@@ -7,11 +7,8 @@ using namespace std;
 
 Movie::Movie(int id, string name, double duration, string genre, double rating) : Video(id, name, duration, genre, rating) {}
 
-void Movie::calculateAverageDuration()
+void Movie::calculateAverageDurationAndRating()
 {
-    duration = duration;
-}
-void Movie::calculateAverageRating()
-{
-    rating = rating;
+	duration = duration;
+	rating = rating;
 }

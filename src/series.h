@@ -13,8 +13,7 @@ private:
 public:
     Series(int id, string name, double duration, string genre, double rating, vector<Episode> episodes);
 
-    void calculateAverageDuration();
-    void calculateAverageRating();
+    void calculateAverageDurationAndRating();
     vector<Episode> getEpisodes() const;
     void setEpisodes(vector<Episode> newEpisodes);
 };

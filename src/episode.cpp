@@ -26,3 +26,15 @@ double Episode::getRating() const
 {
     return rating;
 }
+
+Episode Episode::operator+(Episode const& obj)
+{
+    int sumDuration = obj.duration;
+    sumDuration += duration;
+
+    int sumRating = obj.rating;
+    sumRating += rating;
+
+    Episode sum("sumEpisode", 1, sumRating, sumDuration);
+    return sum;
+}

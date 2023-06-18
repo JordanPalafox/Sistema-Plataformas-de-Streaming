@@ -7,8 +7,7 @@ using namespace std;
 
 Video::Video(int id, string name, double duration, string genre, double rating) : id(id), name(name), duration(duration), genre(genre), rating(rating) {}
 
-void Video::calculateAverageDuration() {}
-void Video::calculateAverageRating() {}
+void Video::calculateAverageDurationAndRating() {}
 void Video::setEpisodes(vector<Episode> newEpisodes) {}
 void Video::setRating(double newRating)
 

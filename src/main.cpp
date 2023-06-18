@@ -28,7 +28,7 @@ int main()
     bool exit = false;
     while (!exit)
     {
-        system(clearScreen);
+        // system(clearScreen);
         cout << "MENU:" << endl;
         cout << "1. Mostrar todo el contenido" << endl;
         cout << "2. Mostrar episodios de una serie" << endl;
