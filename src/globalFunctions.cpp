@@ -9,7 +9,7 @@ using namespace std;
 
 void importData(vector<Video *> &videos)
 {
-    ifstream file("data/database.csv");
+    ifstream file("../data/database.csv");
 
 
     if (!file.is_open())
